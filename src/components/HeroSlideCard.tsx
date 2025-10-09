@@ -13,7 +13,7 @@ const HeroSlideCard = ({ movie }: Props) => {
     : null;
 
   return (
-    <div className="relative w-full h-[80vh] text-white">
+    <div className="relative w-full h-[85vh] text-white">
       {/* Шар 1: Зображення через next/image */}
       {imagePath && (
         <Image

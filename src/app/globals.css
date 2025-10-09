@@ -4,48 +4,60 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --background: 28 2a 36;
+    --foreground: f8 f8 f2;
+    --card: 44 47 5a;
+    --card-foreground: f8 f8 f2;
+    --popover: 44 47 5a;
+    --popover-foreground: f8 f8 f2;
+    --primary: bd 93 f9;
+    --primary-foreground: f8 f8 f2;
+    --secondary: 62 72 a4;
+    --secondary-foreground: f8 f8 f2;
+    --muted: 44 47 5a;
+    --muted-foreground: 62 72 a4;
+    --accent: 8b e9 fd;
+    --accent-foreground: 28 2a 36;
+    --destructive: ff 55 55;
+    --destructive-foreground: f8 f8 f2;
+    --border: 44 47 5a;
+    --input: 44 47 5a;
+    --ring: 8b e9 fd;
     --radius: 0.5rem;
+
+    --dracula-background: #282a36;
+    --dracula-current-line: #44475a;
+    --dracula-foreground: #f8f8f2;
+    --dracula-comment: #6272a4;
+    --dracula-cyan: #8be9fd;
+    --dracula-green: #50fa7b;
+    --dracula-orange: #ffb86c;
+    --dracula-pink: #ff79c6;
+    --dracula-purple: #bd93f9;
+    --dracula-red: #ff5555;
+    --dracula-yellow: #f1fa8c;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 20% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 20% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 20% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 20% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 217.2 91.2% 59.8%;
+    --background: 28 2a 36;
+    --foreground: f8 f8 f2;
+    --card: 44 47 5a;
+    --card-foreground: f8 f8 f2;
+    --popover: 44 47 5a;
+    --popover-foreground: f8 f8 f2;
+    --primary: bd 93 f9;
+    --primary-foreground: f8 f8 f2;
+    --secondary: 62 72 a4;
+    --secondary-foreground: f8 f8 f2;
+    --muted: 44 47 5a;
+    --muted-foreground: 62 72 a4;
+    --accent: 8b e9 fd;
+    --accent-foreground: 28 2a 36;
+    --destructive: ff 55 55;
+    --destructive-foreground: f8 f8 f2;
+    --border: 44 47 5a;
+    --input: 44 47 5a;
+    --ring: 8b e9 fd;
   }
 }
 
@@ -54,6 +66,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--dracula-background);
+    color: var(--dracula-foreground);
   }
 }
