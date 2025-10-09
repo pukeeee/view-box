@@ -1,0 +1,34 @@
+import { Movie } from "@/types";
+import Image from "next/image";
+
+interface Props {
+  movie: Movie;
+}
+
+const IMAGE_URL = "https://image.tmdb.org/t/p/original";
+
+const MovieCard = ({ movie }: Props) => {
+  const imagePath = `${IMAGE_URL}${movie.poster_path}`;
+
+  return (
+    <div className="w-full rounded-lg overflow-hidden shadow-lg">
+      <div className="relative w-full h-auto" style={{ paddingTop: "150%" }}>
+        <Image
+          src={imagePath}
+          alt={movie.title}
+          fill
+          style={{ objectFit: "cover" }}
+          className="absolute top-0 left-0 w-full h-full"
+        />
+      </div>
+      <div className="p-4">
+        <h3 className="font-bold text-lg truncate">{movie.title}</h3>
+        <p className="text-sm text-gray-400">
+          {movie.release_date.substring(0, 4)}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default MovieCard;
