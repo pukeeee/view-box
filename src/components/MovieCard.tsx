@@ -1,14 +1,13 @@
 import { Movie } from "@/types";
 import Image from "next/image";
+import { TMDB_IMAGE_BASE_URL_W500 } from "@/config/constants";
 
 interface Props {
   movie: Movie;
 }
 
-const IMAGE_URL = "https://image.tmdb.org/t/p/original";
-
 const MovieCard = ({ movie }: Props) => {
-  const imagePath = `${IMAGE_URL}${movie.poster_path}`;
+  const imagePath = `${TMDB_IMAGE_BASE_URL_W500}${movie.poster_path}`;
 
   return (
     <div className="w-full rounded-lg overflow-hidden shadow-lg">
