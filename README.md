@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ViewBox: Кіно-каталог на Next.js
 
-## Getting Started
+![ViewBox Logo](public/window.svg)
 
-First, run the development server:
+**ViewBox** — це сучасний та елегантний веб-додаток для перегляду популярних та трендових фільмів. Проєкт створений з використанням Next.js, TypeScript та The Movie Database (TMDb) API.
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+---
+
+## 🚀 Можливості
+
+- **Головний слайдер:** Ефектний повноекранний слайдер для найпопулярніших фільмів.
+- **Каруселі фільмів:** Зручні та адаптивні каруселі для перегляду трендових стрічок.
+- **Адаптивний дизайн:** Чудовий вигляд на будь-якому пристрої, від смартфонів до настільних комп'ютерів.
+- **Динамічні дані:** Вся інформація про фільми отримується в реальному часі з TMDb API.
+- **Сучасний стек:** Побудований на базі Next.js App Router, що забезпечує високу продуктивність та чудовий досвід розробки.
+
+---
+
+## 🛠️ Технології
+
+- **Фреймворк:** [Next.js](https://nextjs.org/)
+- **Мова:** [TypeScript](https://www.typescriptlang.org/)
+- **Стилізація:** [Tailwind CSS](https://tailwindcss.com/)
+- **Анімації:** [Framer Motion](https://www.framer.com/motion/)
+- **Каруселі:** [Swiper](https://swiperjs.com/)
+- **Дані:** [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api)
+
+---
+
+## 🏁 Початок роботи
+
+Щоб запустити проєкт локально, виконайте наступні кроки.
+
+### 1. Передумови
+
+Переконайтеся, що у вас встановлено [Node.js](https://nodejs.org/) (версія 18.x або вище).
+
+### 2. Встановлення
+
+Клонуйте репозиторій та встановіть залежності:
+
+```bash
+git clone https://github.com/your-username/view-box.git
+cd view-box
+npm install
+```
+
+### 3. Налаштування середовища
+
+Для роботи з TMDb API потрібен ключ.
+
+1.  Отримайте свій API-ключ на сайті [The Movie Database](https://www.themoviedb.org/signup).
+2.  Створіть файл `.env.local` у корені проєкту.
+3.  Додайте до нього ваш ключ:
+
+```
+TMDB_API_KEY=your_tmdb_api_key
+```
+
+### 4. Запуск сервера для розробки
+
+Виконайте команду:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Відкрийте [http://localhost:3000](http://localhost:3000) у вашому браузері, щоб побачити результат.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🤝 Внесок у проєкт
 
-## Learn More
+Ми раді будь-якому внеску! Якщо ви хочете покращити проєкт, будь ласка, дотримуйтесь цих кроків:
 
-To learn more about Next.js, take a look at the following resources:
+1.  Зробіть форк репозиторію.
+2.  Створіть нову гілку (`git checkout -b feature/AmazingFeature`).
+3.  Внесіть свої зміни.
+4.  Зробіть коміт (`git commit -m 'Add some AmazingFeature'`).
+5.  Запуште зміни у свою гілку (`git push origin feature/AmazingFeature`).
+6.  Відкрийте Pull Request.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📜 Ліцензія
 
-## Deploy on Vercel
+Цей проєкт розповсюджується за ліцензією **MIT**.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Це означає, що ви можете вільно:
+- Використовувати код у комерційних та особистих проєктах.
+- Модифікувати та розповсюджувати його.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Єдина вимога** — ви повинні включати оригінальний текст авторського права та ліцензії у всі копії або значні частини програмного забезпечення.
+
+Будь ласка, ознайомтесь з файлом `LICENSE` для отримання повної інформації.
