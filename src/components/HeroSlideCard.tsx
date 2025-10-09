@@ -1,6 +1,7 @@
 import { Movie } from "@/types";
 import { TMDB_IMAGE_BASE_URL_ORIGINAL } from "@/config/constants";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   movie: Movie;
@@ -31,12 +32,12 @@ const HeroSlideCard = ({ movie }: Props) => {
         <h2 className="text-4xl md:text-6xl font-bold mb-4">{movie.title}</h2>
         <p className="text-lg mb-6 line-clamp-3">{movie.overview}</p>
         <div className="flex space-x-4">
-          <button className="px-8 py-3 bg-red-600 hover:bg-red-700 rounded-md font-bold transition">
+          <Button size="lg" variant="outline">
             Watch
-          </button>
-          <button className="px-8 py-3 bg-white/20 hover:bg-white/30 rounded-md font-bold transition">
+          </Button>
+          <Button size="lg" variant="outline">
             More Info
-          </button>
+          </Button>
         </div>
       </div>
     </div>
