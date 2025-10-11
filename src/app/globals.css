@@ -24,18 +24,6 @@
     --input: 44 47 5a;
     --ring: 8b e9 fd;
     --radius: 0.5rem;
-
-    --dracula-background: #282a36;
-    --dracula-current-line: #44475a;
-    --dracula-foreground: #f8f8f2;
-    --dracula-comment: #6272a4;
-    --dracula-cyan: #8be9fd;
-    --dracula-green: #50fa7b;
-    --dracula-orange: #ffb86c;
-    --dracula-pink: #ff79c6;
-    --dracula-purple: #bd93f9;
-    --dracula-red: #ff5555;
-    --dracula-yellow: #f1fa8c;
   }
 
   .dark {
@@ -66,7 +54,19 @@
     @apply border-border;
   }
   body {
-    background-color: var(--dracula-background);
-    color: var(--dracula-foreground);
+    @apply bg-dracula-background text-dracula-foreground;
   }
+}
+
+/* Swiper Hero Slider Navigation */
+.hero-swiper .swiper-button-prev,
+.hero-swiper .swiper-button-next {
+  opacity: 0;
+  transition: opacity 0.3s;
+  color: white;
+}
+
+.group:hover .hero-swiper .swiper-button-prev,
+.group:hover .hero-swiper .swiper-button-next {
+  opacity: 1;
 }

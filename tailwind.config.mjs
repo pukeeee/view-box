@@ -1,14 +1,15 @@
-import tailwindcssAnimate from 'tailwindcss-animate';
+import tailwindcssAnimate from "tailwindcss-animate";
+import tailwindcssAspectRatio from "@tailwindcss/aspect-ratio";
 
 /** @type {import('tailwindcss').Config} */
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -53,7 +54,19 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        "dracula-pink": "var(--dracula-pink)",
+        dracula: {
+          background: "#282a36",
+          "current-line": "#44475a",
+          foreground: "#f8f8f2",
+          comment: "#6272a4",
+          cyan: "#8be9fd",
+          green: "#50fa7b",
+          orange: "#ffb86c",
+          pink: "#ff79c6",
+          purple: "#bd93f9",
+          red: "#ff5555",
+          yellow: "#f1fa8c",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -76,7 +89,7 @@ const config = {
       },
     },
   },
-  plugins: [tailwindcssAnimate],
+  plugins: [tailwindcssAnimate, tailwindcssAspectRatio],
 };
 
 export default config;

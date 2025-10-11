@@ -40,7 +40,7 @@ const HeroSlider = ({ movies }: Props) => {
           },
         }}
         speed={1000}
-        className="w-full h-[85vh]" // Фіксований розмір
+        className="w-full h-[85vh] hero-swiper" // Фіксований розмір
       >
         {movies.map((movie) => (
           <SwiperSlide key={movie.id}>
@@ -48,20 +48,6 @@ const HeroSlider = ({ movies }: Props) => {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {/* Стилізація стрілок, щоб вони з'являлись при наведенні */}
-      <style jsx global>{`
-        .swiper-button-prev,
-        .swiper-button-next {
-          opacity: 0;
-          transition: opacity 0.3s;
-          color: white; /* Колір стрілок */
-        }
-        .group:hover .swiper-button-prev,
-        .group:hover .swiper-button-next {
-          opacity: 1;
-        }
-      `}</style>
     </div>
   );
 };

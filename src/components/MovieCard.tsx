@@ -11,13 +11,12 @@ const MovieCard = ({ movie }: Props) => {
 
   return (
     <div className="w-full rounded-lg overflow-hidden shadow-lg">
-      <div className="relative w-full h-auto" style={{ paddingTop: "150%" }}>
+      <div className="relative w-full aspect-w-2 aspect-h-3">
         <Image
           src={imagePath}
           alt={movie.title}
           fill
-          style={{ objectFit: "cover" }}
-          className="absolute top-0 left-0 w-full h-full"
+          className="object-cover"
         />
       </div>
       <div className="p-4">

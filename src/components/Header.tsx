@@ -12,8 +12,7 @@ const Header = () => {
       <div className="flex items-center space-x-14">
         <Link
           href="/"
-          className="text-3xl font-bold"
-          style={{ color: "var(--dracula-pink)" }}
+          className="text-3xl font-bold text-dracula-pink"
         >
           ViewBox
         </Link>
