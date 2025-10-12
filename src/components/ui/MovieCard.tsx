@@ -22,7 +22,7 @@ const MovieCard = ({ movie }: Props) => {
       <div className="p-4">
         <h3 className="font-bold text-lg truncate">{movie.title}</h3>
         <p className="text-sm text-gray-400">
-          {movie.release_date.substring(0, 4)}
+          {movie.release_date?.substring(0, 4)}
         </p>
       </div>
     </div>

@@ -1,31 +1,27 @@
 import { getTrendingMovies, getNowPlayingMovies } from "@/services/tmdb-movie";
-import { getTopRatedTVShows } from "@/services/tmdb-series";
-import MoviesCarousel from "@/components/features/MoviesCarousel";
+import { getTrendingTVShows } from "@/services/tmdb-series";
 import HeroSlider from "@/components/features/HeroSlider";
-import TVShowsCarousel from "@/components/features/TVShowsCarousel";
+import TrendingSection from "@/components/features/TrendingSection";
+import MediaSection from "@/components/features/MediaSection";
+import Footer from "@/components/layout/Footer";
 
 export default async function HomePage() {
-  const trendingMovies = await getTrendingMovies();
   const nowPlayingMovies = await getNowPlayingMovies();
-  const topRatedSeries = await getTopRatedTVShows();
+  const trendingMovies = await getTrendingMovies();
+  const trendingTVShows = await getTrendingTVShows();
 
   return (
     <main>
       <HeroSlider movies={nowPlayingMovies} />
 
-      <div className="p-8 pt-12">
-        {/*<h1 className="text-2xl font-bold mb-4 text-dracula-purple">ViewBox</h1>*/}
+      <TrendingSection
+        trendingMovies={trendingMovies}
+        trendingTVShows={trendingTVShows}
+      />
 
-        <h2 className="text-xl font-semibold mb-4 text-dracula-pink">
-          Trending Movies
-        </h2>
-        <MoviesCarousel movies={trendingMovies} />
+      <MediaSection />
 
-        <h2 className="text-xl font-semibold mb-4 text-dracula-pink">
-          Top Rated TV shows
-        </h2>
-        <TVShowsCarousel tvShows={topRatedSeries} />
-      </div>
+      <Footer />
     </main>
   );
 }

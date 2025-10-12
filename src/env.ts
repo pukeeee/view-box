@@ -11,7 +11,7 @@ if (!parsedEnv.success) {
     "❌ Invalid environment variables:",
     z.treeifyError(parsedEnv.error),
   );
-  throw new Error("Invalid environment variables. Check your .env.local file.");
+  throw new Error("Invalid environment variables. Check your .env file.");
 }
 
 export const env = parsedEnv.data;

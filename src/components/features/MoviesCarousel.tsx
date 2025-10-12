@@ -24,22 +24,18 @@ const MoviesCarousel = ({ movies }: Props) => {
       spaceBetween={20}
       // Налаштування для різних розмірів екрану (адаптивність)
       breakpoints={{
-        // для екранів >= 320px
         320: {
           slidesPerView: 1.5,
           spaceBetween: 10,
         },
-        // для екранів >= 480px
         480: {
           slidesPerView: 2.5,
           spaceBetween: 15,
         },
-        // для екранів >= 768px
         768: {
           slidesPerView: 3.5,
           spaceBetween: 20,
         },
-        // для екранів >= 1024px
         1024: {
           slidesPerView: 5.5,
           spaceBetween: 20,
@@ -51,6 +47,7 @@ const MoviesCarousel = ({ movies }: Props) => {
         disableOnInteraction: false, // Не вимикати після ручного переключення
       }}
       speed={2000}
+      className="media-carousel"
     >
       {movies.map((movie) => (
         <SwiperSlide key={movie.id}>

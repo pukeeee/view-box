@@ -8,14 +8,6 @@ type QueryParams = {
   [key: string]: string | number | boolean;
 };
 
-/**
- * Універсальний клієнт для роботи з API The Movie Database.
- * @param endpoint - Кінцева точка API.
- * @param schema - Zod-схема для валідації відповіді.
- * @param params - Додаткові параметри запиту.
- * @returns — Повертає провалідовані та типізовані дані.
- * @throws — Викидає помилку, якщо запит або валідація не вдалися.
- */
 export const tmdbApi = async <T extends z.ZodTypeAny>(
   endpoint: string,
   schema: T,
@@ -27,6 +19,9 @@ export const tmdbApi = async <T extends z.ZodTypeAny>(
   }).toString();
 
   const url = `${BASE_URL}${endpoint}?${query}`;
+
+  // --- ЛОГУВАННЯ: Початок запиту ---
+  console.log(`🚀 [TMDB API Request] GET: /${endpoint}`, params);
 
   try {
     const response = await fetch(url, {
@@ -43,12 +38,21 @@ export const tmdbApi = async <T extends z.ZodTypeAny>(
 
     const data = await response.json();
 
-    // Валідуємо дані за допомогою переданої схеми
+    // --- ЛОГУВАННЯ: Успішна відповідь ---
+    console.log(
+      `✅ [TMDB API Response] Success for /${endpoint}:`,
+      // Виводимо лише кількість результатів, щоб не засмічувати консоль
+      {
+        resultsCount: Array.isArray(data.results) ? data.results.length : "N/A",
+        page: data.page,
+      },
+    );
+
     const parsedData = schema.safeParse(data);
 
     if (!parsedData.success) {
       console.error(
-        "❌ API response validation failed:",
+        `❌ [TMDB API Validation Failed] for /${endpoint}:`,
         z.treeifyError(parsedData.error)
       );
       throw new Error("API response validation failed.");
@@ -56,9 +60,10 @@ export const tmdbApi = async <T extends z.ZodTypeAny>(
 
     return parsedData.data;
   } catch (error) {
-    if (error instanceof Error && error.message !== "API response validation failed.") {
-      console.error(`Failed to fetch data from endpoint: ${endpoint}`, error);
+    if (error instanceof Error && error.message.includes("fetch")) {
+      console.error(`❌ [TMDB API Fetch Error] for /${endpoint}:`, error);
     }
+    // Інші помилки (валідації, відповіді) вже логуються вище
     throw error;
   }
 };

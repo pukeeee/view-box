@@ -6,7 +6,7 @@ interface Props {
   tvShow: TVShow;
 }
 
-const TVShowsCard = ({ tvShow }: Props) => {
+const TVShowCard = ({ tvShow }: Props) => {
   const imagePath = `${TMDB_IMAGE_BASE_URL_W500}${tvShow.poster_path}`;
 
   return (
@@ -23,11 +23,11 @@ const TVShowsCard = ({ tvShow }: Props) => {
       <div className="p-4">
         <h3 className="font-bold text-lg truncate">{tvShow.name}</h3>
         <p className="text-sm text-gray-400">
-          {tvShow.first_air_date.substring(0, 4)}
+          {tvShow.first_air_date?.substring(0, 4)}
         </p>
       </div>
     </div>
   );
 };
 
-export default TVShowsCard;
+export default TVShowCard;
