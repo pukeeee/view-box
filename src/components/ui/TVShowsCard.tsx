@@ -1,9 +1,9 @@
-import { TVshow } from "@/types";
+import { TVShow } from "@/types/schemas";
 import Image from "next/image";
 import { TMDB_IMAGE_BASE_URL_W500 } from "@/config/constants";
 
 interface Props {
-  tvShow: TVshow;
+  tvShow: TVShow;
 }
 
 const TVShowsCard = ({ tvShow }: Props) => {

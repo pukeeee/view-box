@@ -1,4 +1,4 @@
-import { Movie } from "@/types";
+import { Movie } from "@/types/schemas";
 import { TMDB_IMAGE_BASE_URL_ORIGINAL } from "@/config/constants";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";

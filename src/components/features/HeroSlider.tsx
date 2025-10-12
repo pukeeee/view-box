@@ -1,6 +1,6 @@
 "use client";
 
-import { Movie } from "@/types";
+import { Movie } from "@/types/schemas";
 import HeroSlideCard from "./HeroSlideCard";
 
 import { Swiper, SwiperSlide } from "swiper/react";

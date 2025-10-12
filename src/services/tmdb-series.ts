@@ -1,122 +1,70 @@
-const TMDB_API_KEY = process.env.TMDB_API_KEY;
-import { LANGUAGE, BASE_URL } from "@/config/constants";
+import { tmdbApi } from "@/lib/api";
+import {
+  TVShow,
+  tmdbTVShowResponseSchema, // Імпортуємо схему
+} from "@/types/schemas";
 
-export const getTrendingSeries = async () => {
+/**
+ * Отримує список серіалів, що в тренді.
+ * @returns Масив серіалів.
+ */
+export const getTrendingTVShows = async (): Promise<TVShow[]> => {
   try {
-    const response = await fetch(
-      `${BASE_URL}trending/tv/week?language=${LANGUAGE}`,
-      {
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${TMDB_API_KEY}`,
-        },
-      },
-    );
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    const data = await response.json();
+    const data = await tmdbApi("trending/tv/week", tmdbTVShowResponseSchema);
     return data.results;
-  } catch (error) {
-    console.error("Failed to fetch trending movies:", error);
+  } catch {
     return [];
   }
 };
 
-export const getTopRatedSeries = async () => {
+/**
+ * Отримує список серіалів з найвищим рейтингом.
+ * @returns Масив серіалів.
+ */
+export const getTopRatedTVShows = async (): Promise<TVShow[]> => {
   try {
-    const response = await fetch(
-      `${BASE_URL}/tv/top_rated?language=${LANGUAGE}`,
-      {
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${TMDB_API_KEY}`,
-        },
-      },
-    );
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    const data = await response.json();
+    const data = await tmdbApi("tv/top_rated", tmdbTVShowResponseSchema);
     return data.results;
-  } catch (error) {
-    console.error("Failed to fetch trending movies:", error);
+  } catch {
     return [];
   }
 };
 
-export const getPopularTV = async () => {
+/**
+ * Отримує список популярних серіалів.
+ * @returns Масив серіалів.
+ */
+export const getPopularTV = async (): Promise<TVShow[]> => {
   try {
-    const response = await fetch(
-      `${BASE_URL}/tv/popular?language=${LANGUAGE}`,
-      {
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${TMDB_API_KEY}`,
-        },
-      },
-    );
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    const data = await response.json();
+    const data = await tmdbApi("tv/popular", tmdbTVShowResponseSchema);
     return data.results;
-  } catch (error) {
-    console.error("Failed to fetch trending movies:", error);
+  } catch {
     return [];
   }
 };
 
-export const getOnTheAirTV = async () => {
+/**
+ * Отримує список серіалів, що зараз в ефірі.
+ * @returns Масив серіалів.
+ */
+export const getOnTheAirTV = async (): Promise<TVShow[]> => {
   try {
-    const response = await fetch(
-      `${BASE_URL}/tv/on_the_air?language=${LANGUAGE}`,
-      {
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${TMDB_API_KEY}`,
-        },
-      },
-    );
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    const data = await response.json();
+    const data = await tmdbApi("tv/on_the_air", tmdbTVShowResponseSchema);
     return data.results;
-  } catch (error) {
-    console.error("Failed to fetch trending movies:", error);
+  } catch {
     return [];
   }
 };
 
-export const getAiringTodayTV = async () => {
+/**
+ * Отримує список серіалів, що виходять сьогодні.
+ * @returns Масив серіалів.
+ */
+export const getAiringTodayTV = async (): Promise<TVShow[]> => {
   try {
-    const response = await fetch(
-      `${BASE_URL}/tv/airing_today?language=${LANGUAGE}`,
-      {
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${TMDB_API_KEY}`,
-        },
-      },
-    );
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    const data = await response.json();
+    const data = await tmdbApi("tv/airing_today", tmdbTVShowResponseSchema);
     return data.results;
-  } catch (error) {
-    console.error("Failed to fetch trending movies:", error);
+  } catch {
     return [];
   }
 };

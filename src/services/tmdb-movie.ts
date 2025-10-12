@@ -1,50 +1,35 @@
-const TMDB_API_KEY = process.env.TMDB_API_KEY;
-import { LANGUAGE, BASE_URL } from "@/config/constants";
+import { tmdbApi } from "@/lib/api";
+import {
+  Movie,
+  tmdbMovieResponseSchema, // Імпортуємо схему
+} from "@/types/schemas";
 
-export const getTrendingMovies = async () => {
+/**
+ * Отримує список фільмів, що в тренді.
+ * @returns Масив фільмів.
+ */
+export const getTrendingMovies = async (): Promise<Movie[]> => {
   try {
-    const response = await fetch(
-      `${BASE_URL}trending/movie/week?language=${LANGUAGE}`,
-      {
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${TMDB_API_KEY}`,
-        },
-      },
-    );
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    const data = await response.json();
+    // Передаємо схему для валідації
+    const data = await tmdbApi("trending/movie/week", tmdbMovieResponseSchema);
     return data.results;
-  } catch (error) {
-    console.error("Failed to fetch trending movies:", error);
+  } catch {
+    // Помилка вже залогована в tmdbApi, тому повертаємо порожній масив
     return [];
   }
 };
 
-export const getNowPlayingMovies = async () => {
+/**
+ * Отримує список фільмів, що зараз у прокаті.
+ * @returns Масив фільмів.
+ */
+export const getNowPlayingMovies = async (): Promise<Movie[]> => {
   try {
-    const response = await fetch(
-      `${BASE_URL}/movie/now_playing?language=${LANGUAGE}`,
-      {
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${TMDB_API_KEY}`,
-        },
-      },
-    );
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    const data = await response.json();
+    // Передаємо схему для валідації
+    const data = await tmdbApi("movie/now_playing", tmdbMovieResponseSchema);
     return data.results;
-  } catch (error) {
-    console.error("Failed to fetch trending movies:", error);
+  } catch {
+    // Помилка вже залогована в tmdbApi
     return [];
   }
 };

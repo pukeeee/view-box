@@ -1,7 +1,7 @@
 "use client"; // 👈 Дуже важливо! Swiper - це клієнтський компонент.
 
-import { Movie } from "@/types";
-import MovieCard from "./MovieCard";
+import { TVShow } from "@/types/schemas";
+import TVShowsCard from "../ui/TVShowsCard";
 
 // Імпортуємо компоненти Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,10 +11,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 interface Props {
-  movies: Movie[];
+  tvShows: TVShow[];
 }
 
-const MoviesCarousel = ({ movies }: Props) => {
+const TVShowsCarousel = ({ tvShows }: Props) => {
   return (
     <Swiper
       modules={[Autoplay, Navigation]}
@@ -52,13 +52,13 @@ const MoviesCarousel = ({ movies }: Props) => {
       }}
       speed={2000}
     >
-      {movies.map((movie) => (
-        <SwiperSlide key={movie.id}>
-          <MovieCard movie={movie} />
+      {tvShows.map((tvShow) => (
+        <SwiperSlide key={tvShow.id}>
+          <TVShowsCard tvShow={tvShow} />
         </SwiperSlide>
       ))}
     </Swiper>
   );
 };
 
-export default MoviesCarousel;
+export default TVShowsCarousel;

@@ -1,4 +1,4 @@
-import { Movie } from "@/types";
+import { Movie } from "@/types/schemas";
 import Image from "next/image";
 import { TMDB_IMAGE_BASE_URL_W500 } from "@/config/constants";
 
