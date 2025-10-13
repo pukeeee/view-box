@@ -11,13 +11,13 @@ interface Props {
 const TrendingSection = ({ trendingMovies, trendingTVShows }: Props) => {
   // Спільні класи для кнопок-табів, щоб уникнути повторення
   const triggerStyles =
-    "text-lg hover:text-gray-300 rounded-none bg-transparent p-0 shadow-none data-[state=active]:text-dracula-pink data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-dracula-pink";
+    "text-lg hover:text-gray-300 rounded-none bg-transparent p-0 shadow-none data-[state=active]:text-dracula-purple data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-dracula-purple";
 
   return (
-    <section id="trending" className="p-8 pt-12">
+    <section id="trending" className="py-8 pt-12">
       <Tabs defaultValue="movies" className="w-full">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-semibold text-dracula-pink">В тренді</h2>
+        <div className="px-8 lg:px-16 xl:px-24 flex items-center justify-start gap-8 mb-8">
+          <h2 className="text-3xl font-semibold text-dracula-pink">В тренді</h2>
           {/* Прибираємо фон у контейнера табів і додаємо відступ між кнопками */}
           <TabsList className="bg-transparent p-0 space-x-8">
             <TabsTrigger value="movies" className={triggerStyles}>

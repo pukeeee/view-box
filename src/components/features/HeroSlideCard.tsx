@@ -13,7 +13,7 @@ const HeroSlideCard = ({ movie }: Props) => {
     : null;
 
   return (
-    <div className="relative w-full h-[85vh] text-white">
+    <div className="relative w-full h-[60vh] lg:h-[85vh] text-white">
       {/* Шар 1: Зображення через next/image */}
       {imagePath && (
         <Image
@@ -28,14 +28,16 @@ const HeroSlideCard = ({ movie }: Props) => {
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
 
       {/* Шар 3: Контент */}
-      <div className="relative z-10 flex flex-col justify-center h-full p-8 md:p-16 max-w-2xl">
-        <h2 className="text-4xl md:text-6xl font-bold mb-4">{movie.title}</h2>
-        <p className="text-lg mb-6 line-clamp-3">{movie.overview}</p>
+      <div className="relative z-10 flex flex-col justify-center h-full p-4 md:p-16 max-w-2xl">
+        <h2 className="text-2xl md:text-6xl font-bold mb-4">{movie.title}</h2>
+        <p className="text-base md:text-lg mb-6 line-clamp-3">
+          {movie.overview}
+        </p>
         <div className="flex space-x-4">
-          <Button size="lg" variant="outline">
+          <Button size="lg" variant="outline" className="select-none focus:outline-none">
             Watch
           </Button>
-          <Button size="lg" variant="outline">
+          <Button size="lg" variant="outline" className="select-none focus:outline-none">
             More Info
           </Button>
         </div>

@@ -40,7 +40,7 @@ const HeroSlider = ({ movies }: Props) => {
           },
         }}
         speed={1000}
-        className="w-full h-[85vh] hero-swiper" // Фіксований розмір
+        className="w-full h-[60vh] lg:h-[85vh] hero-swiper" // Фіксований розмір
       >
         {movies.map((movie) => (
           <SwiperSlide key={movie.id}>

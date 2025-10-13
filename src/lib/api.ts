@@ -11,7 +11,7 @@ type QueryParams = {
 export const tmdbApi = async <T extends z.ZodTypeAny>(
   endpoint: string,
   schema: T,
-  params: QueryParams = {}
+  params: QueryParams = {},
 ): Promise<z.infer<T>> => {
   const query = new URLSearchParams({
     language: LANGUAGE,
@@ -19,9 +19,6 @@ export const tmdbApi = async <T extends z.ZodTypeAny>(
   }).toString();
 
   const url = `${BASE_URL}${endpoint}?${query}`;
-
-  // --- ЛОГУВАННЯ: Початок запиту ---
-  console.log(`🚀 [TMDB API Request] GET: /${endpoint}`, params);
 
   try {
     const response = await fetch(url, {
@@ -32,28 +29,17 @@ export const tmdbApi = async <T extends z.ZodTypeAny>(
     });
 
     if (!response.ok) {
-      console.error(`API Error: ${response.status} ${response.statusText}`);
       throw new Error("Network response was not ok");
     }
 
     const data = await response.json();
-
-    // --- ЛОГУВАННЯ: Успішна відповідь ---
-    console.log(
-      `✅ [TMDB API Response] Success for /${endpoint}:`,
-      // Виводимо лише кількість результатів, щоб не засмічувати консоль
-      {
-        resultsCount: Array.isArray(data.results) ? data.results.length : "N/A",
-        page: data.page,
-      },
-    );
 
     const parsedData = schema.safeParse(data);
 
     if (!parsedData.success) {
       console.error(
         `❌ [TMDB API Validation Failed] for /${endpoint}:`,
-        z.treeifyError(parsedData.error)
+        z.treeifyError(parsedData.error),
       );
       throw new Error("API response validation failed.");
     }

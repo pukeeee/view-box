@@ -70,3 +70,10 @@
 .group:hover .hero-swiper .swiper-button-next {
   opacity: 1;
 }
+
+@media (max-width: 767px) {
+  .hero-swiper .swiper-button-next,
+  .hero-swiper .swiper-button-prev {
+    display: none;
+  }
+}

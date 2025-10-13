@@ -25,7 +25,7 @@ const TVShowsCarousel = ({ tvShows }: Props) => {
       // Налаштування для різних розмірів екрану (адаптивність)
       breakpoints={{
         320: {
-          slidesPerView: 1.5,
+          slidesPerView: 2.2,
           spaceBetween: 10,
         },
         480: {
