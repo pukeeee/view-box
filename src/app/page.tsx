@@ -19,7 +19,7 @@ export default async function HomePage() {
         trendingTVShows={trendingTVShows}
       />
 
-      <MediaSection id="media-section" />
+      <MediaSection />
 
       <Footer />
     </main>
