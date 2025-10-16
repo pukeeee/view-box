@@ -12,6 +12,7 @@ import MovieCard from "../ui/MovieCard";
 import TVShowCard from "../ui/TVShowCard";
 import { Movie, TVShow } from "@/types/schemas";
 import { Button } from "@/components/ui/button";
+import { SkeletonGrid } from "./SkeletonGrid";
 
 const movieCategories: MovieCategory[] = [
   "now_playing",
@@ -101,21 +102,25 @@ const MediaSection = () => {
 
       {/* --- Відображення контенту --- */}
       <div className="mt-8 min-h-[300px]">
-        {isLoading && <p className="text-center">Завантаження...</p>}
         {isError && (
           <p className="text-center text-dracula-red">
             Помилка завантаження даних.
           </p>
         )}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-4">
-          {uniqueMedia.map((item) =>
-            isMovie ? (
-              <MovieCard key={item.id} movie={item as Movie} />
-            ) : (
-              <TVShowCard key={item.id} tvShow={item as TVShow} />
-            ),
-          )}
-        </div>
+
+        {isLoading ? (
+          <SkeletonGrid />
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-4">
+            {uniqueMedia.map((item) =>
+              isMovie ? (
+                <MovieCard key={item.id} movie={item as Movie} />
+              ) : (
+                <TVShowCard key={item.id} tvShow={item as TVShow} />
+              ),
+            )}
+          </div>
+        )}
       </div>
 
       {/* --- Кнопка "Завантажити ще" --- */}

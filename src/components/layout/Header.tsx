@@ -92,12 +92,13 @@ const Header = () => {
               <button
                 onClick={() => setIsSearchVisible(false)}
                 className="ml-2"
+                aria-label="Закрити пошук"
               >
                 <X className="h-8 w-8" />
               </button>
             </div>
           ) : (
-            <button onClick={() => setIsSearchVisible(true)}>
+            <button onClick={() => setIsSearchVisible(true)} aria-label="Відкрити пошук">
               <Search className="h-8 w-8" />
             </button>
           )}
@@ -117,12 +118,13 @@ const Header = () => {
               <button
                 onClick={() => setIsSearchVisible(false)}
                 className="ml-2"
+                aria-label="Закрити пошук"
               >
                 <X className="h-6 w-6" />
               </button>
             </div>
           ) : (
-            <button onClick={() => setIsSearchVisible(true)}>
+            <button onClick={() => setIsSearchVisible(true)} aria-label="Відкрити пошук">
               <Search className="h-6 w-6" />
             </button>
           )}
@@ -130,7 +132,7 @@ const Header = () => {
 
         <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
           <SheetTrigger asChild>
-            <button className="select-none focus:outline-none">
+            <button className="select-none focus:outline-none" aria-label="Відкрити меню навігації">
               <Menu className="h-8 w-8" />
             </button>
           </SheetTrigger>
