@@ -25,7 +25,7 @@ const Header = () => {
           behavior: "smooth",
         });
       }
-    }, 300);
+    }, 100);
   };
 
   return (
@@ -49,6 +49,16 @@ const Header = () => {
             className="text-xl hover:text-gray-300"
           >
             Home
+          </Link>
+          <Link
+            href="trending-section"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick("#trending-section");
+            }}
+            className="text-xl hover:text-gray-300"
+          >
+            Trending
           </Link>
           <Link
             href="#media-section"
@@ -134,6 +144,12 @@ const Header = () => {
                 className="text-lg hover:text-gray-300 focus:outline-none"
               >
                 Home
+              </button>
+              <button
+                onClick={() => handleNavClick("#trending-section")}
+                className="text-lg hover:text-gray-300 focus:outline-none"
+              >
+                Trending
               </button>
               <button
                 onClick={() => handleNavClick("#media-section", "movie")}

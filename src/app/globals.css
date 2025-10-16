@@ -77,3 +77,10 @@
     display: none;
   }
 }
+
+/* Декларативне виправлення прокрутки для якірних посилань */
+@layer base {
+  [data-scroll-section] {
+    scroll-margin-top: 80px; /* Висота хедера */
+  }
+}

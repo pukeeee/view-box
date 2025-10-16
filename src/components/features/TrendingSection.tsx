@@ -14,7 +14,7 @@ const TrendingSection = ({ trendingMovies, trendingTVShows }: Props) => {
     "text-lg hover:text-gray-300 rounded-none bg-transparent p-0 shadow-none data-[state=active]:text-dracula-purple data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-dracula-purple";
 
   return (
-    <section id="trending" className="py-8 pt-12">
+    <section id="trending-section" data-scroll-section className="py-8 pt-12">
       <Tabs defaultValue="movies" className="w-full">
         <div className="px-8 lg:px-16 xl:px-24 flex items-center justify-start gap-8 mb-8">
           <h2 className="text-3xl font-semibold text-dracula-pink">В тренді</h2>

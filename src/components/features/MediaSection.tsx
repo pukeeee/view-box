@@ -8,10 +8,10 @@ import {
 } from "@/store/media-store";
 import { useMediaData } from "@/hooks/use-media-data";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-// Прибираємо каруселі, імпортуємо картки напряму
 import MovieCard from "../ui/MovieCard";
 import TVShowCard from "../ui/TVShowCard";
 import { Movie, TVShow } from "@/types/schemas";
+import { Button } from "@/components/ui/button";
 
 const movieCategories: MovieCategory[] = [
   "now_playing",
@@ -36,7 +36,13 @@ const MediaSection = () => {
     setTVCategory,
   } = useMediaStore();
 
-  const { data, isLoading, isError } = useMediaData();
+  const { pages, isLoading, isError, loadMore, isLoadingMore, isReachingEnd } =
+    useMediaData();
+
+  const allMedia = pages ? pages.flat() : [];
+  const uniqueMedia = Array.from(
+    new Map(allMedia.map((item) => [item.id, item])).values(),
+  );
 
   const isMovie = mediaType === "movie";
   const categories = isMovie ? movieCategories : tvCategories;
@@ -46,7 +52,11 @@ const MediaSection = () => {
     "text-lg hover:text-gray-300 rounded-none bg-transparent p-0 shadow-none data-[state=active]:text-dracula-purple data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-dracula-purple capitalize";
 
   return (
-    <section id="media-section" className="pb-8 pt-12 px-8 lg:px-16 xl:px-24">
+    <section
+      id="media-section"
+      data-scroll-section
+      className="pb-8 pt-12 px-8 lg:px-16 xl:px-24"
+    >
       {/* --- Таби 1-го рівня: Фільми / Серіали --- */}
       <div className="flex items-center justify-start gap-8 mb-8">
         <h2 className="text-3xl font-semibold text-dracula-pink">Огляд</h2>
@@ -69,7 +79,6 @@ const MediaSection = () => {
       <Tabs
         value={currentCategory}
         onValueChange={(value) => {
-          // Використовуємо явну перевірку, щоб допомогти TypeScript
           if (isMovie) {
             setMovieCategory(value as MovieCategory);
           } else {
@@ -91,24 +100,36 @@ const MediaSection = () => {
       </Tabs>
 
       {/* --- Відображення контенту --- */}
-      {/*lg:px-16 xl:px-24*/}
       <div className="mt-8 min-h-[300px]">
-        {isLoading && <p className="text-center">Loading...</p>}
+        {isLoading && <p className="text-center">Завантаження...</p>}
         {isError && (
-          <p className="text-center text-dracula-red">Error loading data.</p>
+          <p className="text-center text-dracula-red">
+            Помилка завантаження даних.
+          </p>
         )}
-        {data && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-4">
-            {isMovie
-              ? // Явно вказуємо, що тут масив Movie[]
-                (data as Movie[]).map((item) => (
-                  <MovieCard key={item.id} movie={item} />
-                ))
-              : // А тут - масив TVShow[]
-                (data as TVShow[]).map((item) => (
-                  <TVShowCard key={item.id} tvShow={item} />
-                ))}
-          </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-4">
+          {uniqueMedia.map((item) =>
+            isMovie ? (
+              <MovieCard key={item.id} movie={item as Movie} />
+            ) : (
+              <TVShowCard key={item.id} tvShow={item as TVShow} />
+            ),
+          )}
+        </div>
+      </div>
+
+      {/* --- Кнопка "Завантажити ще" --- */}
+      <div className="mt-12 flex justify-center">
+        {!isReachingEnd && !isLoading && (
+          <Button
+            size="lg"
+            variant="outline"
+            className="select-none focus:outline-none"
+            onClick={loadMore}
+            disabled={isLoadingMore}
+          >
+            {isLoadingMore ? "Завантаження..." : "Завантажити ще"}
+          </Button>
         )}
       </div>
     </section>
