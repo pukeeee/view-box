@@ -84,3 +84,8 @@
     scroll-margin-top: 80px; /* Висота хедера */
   }
 }
+
+/* Allow carousel cards to overflow for hover effects */
+.media-carousel.swiper {
+  overflow: visible;
+}

@@ -1,12 +1,16 @@
+'use client';
+
 import { Movie } from "@/types/schemas";
 import Image from "next/image";
+import Link from "next/link";
 import { TMDB_IMAGE_BASE_URL_W500 } from "@/config/constants";
+import { Star } from "lucide-react";
 
 interface Props {
   movie: Movie;
 }
 
-const FALLBACK_IMAGE = "/placeholder-movie.svg"; // Використовуємо нашу SVG-заглушку
+const FALLBACK_IMAGE = "/placeholder-movie.svg";
 
 const MovieCard = ({ movie }: Props) => {
   const isFallback = !movie.poster_path;
@@ -15,29 +19,42 @@ const MovieCard = ({ movie }: Props) => {
     : `${TMDB_IMAGE_BASE_URL_W500}${movie.poster_path}`;
 
   return (
-    <div className="w-full rounded-lg overflow-hidden shadow-lg">
-      <div className="relative w-full aspect-w-2 aspect-h-3">
-        <Image
-          src={imagePath}
-          alt={movie.title}
-          fill
-          className="object-cover"
-          placeholder="blur"
-          blurDataURL="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMyODJhMzYiLz48L3N2Zz4="
-          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-          onError={(e) => {
-            e.currentTarget.src = FALLBACK_IMAGE;
-          }}
-          unoptimized={isFallback}
-        />
+    <Link
+      href={`/movie/${movie.id}`}
+      className="block w-full h-full shadow-lg rounded-lg transition-transform duration-300 hover:scale-105 group cursor-pointer"
+    >
+      <div className="flex flex-col h-full bg-dracula-background rounded-lg overflow-hidden">
+        <div className="relative w-full aspect-w-2 aspect-h-3 flex-shrink-0">
+          <Image
+            src={imagePath}
+            alt={movie.title}
+            fill
+            className="object-cover group-hover:brightness-75 transition-all duration-300"
+            placeholder="blur"
+            blurDataURL="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMyODJhMzYiLz48L3N2Zz4="
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+            onError={(e) => {
+              e.currentTarget.src = FALLBACK_IMAGE;
+            }}
+            unoptimized={isFallback}
+          />
+        </div>
+        <div className="p-4 flex flex-col flex-grow">
+          <h3 className="font-bold text-lg truncate text-dracula-foreground group-hover:text-dracula-purple transition-colors">
+            {movie.title}
+          </h3>
+          <div className="flex justify-between items-center mt-1">
+              <p className="text-sm text-dracula-comment">
+                  {movie.release_date?.substring(0, 4) || "N/A"}
+              </p>
+              <div className="flex items-center gap-1 text-sm text-dracula-comment">
+                  <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                  <span>{movie.vote_average.toFixed(1)}</span>
+              </div>
+          </div>
+        </div>
       </div>
-      <div className="p-4">
-        <h3 className="font-bold text-lg truncate">{movie.title}</h3>
-        <p className="text-sm text-gray-400">
-          {movie.release_date?.substring(0, 4) || "N/A"}
-        </p>
-      </div>
-    </div>
+    </Link>
   );
 };
 
