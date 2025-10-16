@@ -28,10 +28,10 @@ const TrendingSection = ({ trendingMovies, trendingTVShows }: Props) => {
             </TabsTrigger>
           </TabsList>
         </div>
-        <TabsContent value="movies">
+        <TabsContent value="movies" className="max-w-full overflow-x-clip">
           <MoviesCarousel movies={trendingMovies} />
         </TabsContent>
-        <TabsContent value="tv">
+        <TabsContent value="tv" className="max-w-full overflow-x-clip">
           <TVShowsCarousel tvShows={trendingTVShows} />
         </TabsContent>
       </Tabs>

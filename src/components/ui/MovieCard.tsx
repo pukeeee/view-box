@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Movie } from "@/types/schemas";
 import Image from "next/image";
@@ -40,17 +40,17 @@ const MovieCard = ({ movie }: Props) => {
           />
         </div>
         <div className="p-4 flex flex-col flex-grow">
-          <h3 className="font-bold text-lg truncate text-dracula-foreground group-hover:text-dracula-purple transition-colors">
+          <h3 className="font-bold text-lg truncate text-dracula-foreground group-hover:text-dracula-pink transition-colors">
             {movie.title}
           </h3>
           <div className="flex justify-between items-center mt-1">
-              <p className="text-sm text-dracula-comment">
-                  {movie.release_date?.substring(0, 4) || "N/A"}
-              </p>
-              <div className="flex items-center gap-1 text-sm text-dracula-comment">
-                  <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                  <span>{movie.vote_average.toFixed(1)}</span>
-              </div>
+            <p className="text-sm text-dracula-comment">
+              {movie.release_date?.substring(0, 4) || "N/A"}
+            </p>
+            <div className="flex items-center gap-1 text-sm text-dracula-comment">
+              <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+              <span>{movie.vote_average.toFixed(1)}</span>
+            </div>
           </div>
         </div>
       </div>
