@@ -7,22 +7,29 @@ interface Props {
   movie: Movie;
 }
 
+const FALLBACK_IMAGE = "/placeholder-movie.svg"; // Використовуємо нашу SVG-заглушку
+
 const HeroSlideCard = ({ movie }: Props) => {
   const imagePath = movie.backdrop_path
     ? `${TMDB_IMAGE_BASE_URL_ORIGINAL}${movie.backdrop_path}`
-    : null;
+    : FALLBACK_IMAGE;
 
   return (
     <div className="relative w-full h-[60vh] lg:h-[85vh] text-white">
       {/* Шар 1: Зображення через next/image */}
-      {imagePath && (
-        <Image
-          src={imagePath}
-          alt={movie.title}
-          fill
-          className="object-cover"
-        />
-      )}
+      <Image
+        src={imagePath}
+        alt={movie.title}
+        fill
+        className="object-cover"
+        placeholder="blur"
+        blurDataURL="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMyODJhMzYiLz48L3N2Zz4="
+        sizes="100vw"
+        onError={(e) => {
+          e.currentTarget.src = FALLBACK_IMAGE;
+        }}
+        priority={true}
+      />
 
       {/* Шар 2: Градієнт */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
