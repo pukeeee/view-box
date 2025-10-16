@@ -9,9 +9,10 @@ interface Props {
 const FALLBACK_IMAGE = "/placeholder-movie.svg"; // Використовуємо нашу SVG-заглушку
 
 const MovieCard = ({ movie }: Props) => {
-  const imagePath = movie.poster_path
-    ? `${TMDB_IMAGE_BASE_URL_W500}${movie.poster_path}`
-    : FALLBACK_IMAGE;
+  const isFallback = !movie.poster_path;
+  const imagePath = isFallback
+    ? FALLBACK_IMAGE
+    : `${TMDB_IMAGE_BASE_URL_W500}${movie.poster_path}`;
 
   return (
     <div className="w-full rounded-lg overflow-hidden shadow-lg">
@@ -27,6 +28,7 @@ const MovieCard = ({ movie }: Props) => {
           onError={(e) => {
             e.currentTarget.src = FALLBACK_IMAGE;
           }}
+          unoptimized={isFallback}
         />
       </div>
       <div className="p-4">
